@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />    
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="">
+        <img src="img/bg2.png" id="hero" class="">
+            <div class="container">
+                <h3 class="text-center text-white fw-bold mt-5 pt-5">Inicia Sesion</h3>
+                <form class="col-12 d-flex flex-column justify-content-center align-items-center" action="">
+                    <input class="col-10 inpuut my-3 mx-5 input-group-text" type="text" name="name" id="name" placeholder="Usuario">
+                    <input class="col-10 inpuut my-3 px-5 input-group-text" type="text" name="name" id="name" placeholder="Correo">
+                    <input class="col-10 inpuut my-3 px-5 input-group-text" type="password" name="name" id="name" placeholder="Contraseña">
+                    <input class="col-10 inpuut my-3 px-5 input-group-text" type="password" name="name" id="name" placeholder="Confirmar Contraseña">
+                    <div class="col-12 d-grid gap-2">
+                        <button id="btn" class="btn btn-outline-light mx-5" >Ingresar</button>
+                    </div>
+                </form>
+            </div>
+            <div class="slider d-flex align-items-center position-absolute">
+                <img src="img/left-arrow.png" id="prev" alt="prev">
+                <div class="preview d-flex align-items-center">
+                    <img src="img/small1.png" class="thumbnail active" alt="">
+                    <img src="img/small2.png" class="thumbnail" alt="">
+                    <img src="img/small3.png" class="thumbnail" alt="">
+                    <img src="img/small4.png" class="thumbnail" alt="">
+                    <img src="img/small5.png" class="thumbnail" alt="">
+                </div>
+                <img src="img/right-arrow.png" id="nex" alt="nex">
+            </div>
+        </img>
+    </div>
+</body>
+
+<script>
+
+    let prev = document.querySelector("#prev"),
+        nex = document.querySelector("#nex"),
+        thumbnail = document.getElementsByClassName("thumbnail"),
+        hero = document.querySelector("#hero"),
+        i = 0,
+        aux = 0
+
+    const bgImg =[
+    "img/bg1.png",
+    "img/bg2.png",
+    "img/bg3.png",
+    "img/bg4.png",
+    "img/bg5.png",
+    ]
+
+    nex.onclick = ()=>{
+        if(i ==4 ){
+            aux = 4
+            i= 0
+            hero.setAttribute("src",bgImg[i]) 
+            thumbnail[i].classList.toggle("active")
+            if(aux == 4){
+            thumbnail[4].classList.remove("active")
+            }
+
+        }else{
+            aux = 0
+            thumbnail[i].classList.remove("active")
+            hero.setAttribute("src",bgImg[i+1]) 
+            thumbnail[i+1].classList.add("active")
+            i++
+        }
+    }
+
+    prev.onclick = ()=>{
+        if(i ==0 ){
+            aux = 0
+            i= 4
+            hero.setAttribute("src",bgImg[i])
+            thumbnail[i].classList.toggle("active")
+            if(aux == 0){
+            thumbnail[0].classList.remove("active")
+            }
+
+        }else{
+            aux = 4
+            thumbnail[i].classList.remove("active")
+            hero.setAttribute("src",bgImg[i-1]) 
+            thumbnail[i-1].classList.add("active")
+            i--
+        }
+    }
+
+    setInterval(() => {
+        nex.click()
+    }, 3000);
+
+</script>
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</html>
